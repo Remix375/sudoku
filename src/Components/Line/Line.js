@@ -6,11 +6,11 @@ class Line extends React.Component {
         let cases = []
         const taille = this.props.taille
         for(let i=0; i<taille; i++) {
-            cases.push(<th><Case id={i} taille={taille}/></th>)
+            cases.push(<th><Case key={i} caseIndex={i} lineIndex={this.props.lineIndex} taille={taille} onChangeCase={this.props.onChangeCase}/></th>)
         }
 
         return (
-            <h1>{cases}</h1>
+            <div>{cases}</div>
         )
     }
 }

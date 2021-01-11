@@ -11,12 +11,12 @@ class Board extends React.Component {
         let lines = []
         const taille = this.props.taille
         for(let i=0; i<taille; i++) {
-            lines.push(<tr><Line id={i} taille={taille}/></tr>)
+            lines.push(<tr><Line key={i} lineIndex={i} taille={taille} onChangeCase={this.props.onChangeCase} /></tr>)
         }
 
         return (
             <table>
-                <h1>{lines}</h1>
+                {lines}
             </table>
         )
     }

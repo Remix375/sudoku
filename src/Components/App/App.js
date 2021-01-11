@@ -7,7 +7,31 @@ class App extends React.Component {
         super(props)
         this.state = {
             taille: 9,
+            board: [
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ]
         }
+        
+        this.changeCase = this.changeCase.bind(this);
+    }
+
+    changeCase(lineIndex, caseIndex, value) {
+        const boardCopy = this.state.board;
+        boardCopy[lineIndex][caseIndex] = parseInt(value);
+        this.setState(
+            {
+                board: boardCopy
+            }
+        )
+
     }
 
 
@@ -15,7 +39,7 @@ class App extends React.Component {
         return (
             <div>
                 <h1 id='title'>hey</h1>
-                <Board taille={this.state.taille} />
+                <Board taille={this.state.taille} onChangeCase={this.changeCase} />
             </div>
         )
     }
