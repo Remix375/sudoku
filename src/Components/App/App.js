@@ -46,7 +46,9 @@ class App extends React.Component {
 
     reset() {
         this.setState(
-            {
+           
+            {   
+                solveState:'',
                 board: [
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -100,7 +102,7 @@ class App extends React.Component {
     render() {
         return (
             <div id='wrapper'>
-                <h1 id='title'>hey</h1>
+                <h1 id='title'>Sudoku</h1>
                 <Board 
                     taille={this.state.taille} 
                     onChangeCase={this.changeCase}
