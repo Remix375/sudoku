@@ -20,7 +20,7 @@ class App extends React.Component {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 ],
-            time: 5000,
+            time: 50000,
             solveState: ''
         }
         
@@ -66,6 +66,9 @@ class App extends React.Component {
 
 
     solve() {
+        this.setState({
+            solveState:''
+        })
         let tboard = this.state.board
         let updated = true, solved = false
 
