@@ -1,5 +1,6 @@
 import React from 'react';
 import './Case.css'
+import {isNumber} from '../../utils/Solve'
 
 class Case extends React.Component {
     constructor(props){
@@ -8,15 +9,21 @@ class Case extends React.Component {
     }
 
     onChange(e) {
-        console.log('e', e.target.value)
-        console.log('this.props.lineIndex', this.props.lineIndex)
-        console.log('this.props.lineIndex', this.props.lineIndex)
-        this.props.onChangeCase(this.props.lineIndex, this.props.caseIndex, e.target.value)
+        if(e.target.value === ''){
+            this.props.onChangeCase(this.props.lineIndex, this.props.caseIndex, e.target.value)
+        }
+        console.log(e.target.value)
+        if(isNumber(e.target.value)) {
+            const value = parseInt(e.target.value)
+            if(value<=9 && value>=1){
+                this.props.onChangeCase(this.props.lineIndex, this.props.caseIndex, e.target.value)
+            }
+        }
     }
 
     render() {
         return (
-            <input className='case' type='number' min='1' max='9' onChange={this.onChange}></input>
+            <input className='case' type='number' min='1' max='9' onChange={this.onChange} value={(this.props.boardData[this.props.lineIndex][this.props.caseIndex] !== 0) ? this.props.boardData[this.props.lineIndex][this.props.caseIndex] : ''}></input>
         )
     }
 

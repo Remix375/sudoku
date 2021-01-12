@@ -145,7 +145,22 @@ function one_value_cell_constraint(board) {
     return updated
 }
 
+
+
+let backtrack_cond;
+let backtrack_max;
+
+function call_backtrack(orig_board, time) {
+  backtrack_max = time
+  backtrack_cond = 0
+  const response = backtrack_based(orig_board)
+  return response
+}
+
 function backtrack_based(orig_board) {
+  backtrack_cond+=1;
+  console.log(backtrack_cond);
+  if (backtrack_cond <= backtrack_max) {
     // Create a temporary board for our recursion.
     let board = JSON.parse(JSON.stringify(orig_board));
     for (let r = 0; r < 9; r++) {
@@ -161,6 +176,7 @@ function backtrack_based(orig_board) {
               // Choose a value
               board_2[r][c] = cell[i]
               // Recurse again using new board
+              console.log('good')
               let completed_board = backtrack_based(board_2)
               if (completed_board) {
                 return completed_board;
@@ -171,8 +187,11 @@ function backtrack_based(orig_board) {
         }
       }
     }
+  }
   return false;
 }
 
 
-export { one_value_cell_constraint, backtrack_based, is_solved};
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
+
+export { one_value_cell_constraint, is_solved, isNumber, call_backtrack};
